@@ -1,5 +1,18 @@
 <template>
 	<div class="interface-map">
+		<div
+			style="margin-bottom: 1rem;"
+			@keypress.enter="latlng = { lat: $refs.lat.value, lng: $refs.lng.value }"
+		>
+			<input
+				ref="lat"
+				type="text"
+				:value="latlng.lat"
+				placeholder="latitude"
+				style="margin-right: 1rem;"
+			/>
+			<input ref="lng" type="text" :value="latlng.lng" placeholder="longitude" />
+		</div>
 		<div :class="{ 'map-readonly': readonly }" class="map">
 			<div :id="name" class="map-container" :style="{ height: options.height + 'px' }">
 				<!-- Map Renders Here -->
@@ -65,7 +78,7 @@ export default {
 			test: null,
 			map: null,
 			marker: null,
-			latlng: null,
+			latlng: {},
 			isLocating: false,
 			placeName: '',
 			mapInteractions: [
