@@ -34,7 +34,8 @@
 				/>
 			</template>
 			<template slot="buttons">
-				<v-header-button
+				<!-- Just to avoid confusion, let's remove this. -->
+				<!-- <v-header-button
 					v-if="!newItem && !singleItem && permission.delete !== 'none'"
 					icon="delete_outline"
 					icon-color="white"
@@ -42,7 +43,7 @@
 					hover-color="danger-dark"
 					:label="$t('delete')"
 					@click="confirmRemove = true"
-				/>
+				/> -->
 
 				<v-header-button
 					v-if="batch && permission.update !== 'none'"
