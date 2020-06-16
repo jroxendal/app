@@ -261,6 +261,13 @@ export default {
 					} else {
 						this.items.data = res.data;
 					}
+					let stripHost = url => url.replace(/^http:\/\/.+?\//, '/');
+					for (let item of this.items.data) {
+						item.data.full_url = stripHost(item.data.full_url);
+						for (let thumb of item.data.thumbnails) {
+							thumb.url = stripHost(thumb.url);
+						}
+					}
 
 					this.$emit('fetch', {
 						...res.meta,
