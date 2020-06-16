@@ -242,6 +242,11 @@ export default {
 
 			try {
 				const response = await this.$api.getFile(String(id));
+				let stripHost = url => url.replace(/^http:\/\/.+?\//, '/');
+				response.data.data.full_url = stripHost(response.data.data.full_url);
+				for (let thumb of response.data.data.thumbnails) {
+					thumb.url = stripHost(thumb.url);
+				}
 				this.image = response.data;
 			} catch {
 				this.noFileAccess = true;
